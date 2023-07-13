@@ -1,19 +1,13 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
-const browserSync = require('browser-sync');
+import gulp from 'gulp';
+import browserSync, { watch } from 'browser-sync';
+import imagemin from 'gulp-imagemin';
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
 
-const sassCompile = () =>
-  gulp.src(`src/sass/**/*.scss`)
-    .pipe(
-      sass({
-        outputStyle: "compressed"
-      })
-      .on("error", sass.logError)
-    )
-    .pipe(gulp.dest('dist/style'));
+const sass = gulpSass( dartSass );
 
-const browser = (done) => {
-  browserSync.init({
+const browser = () => {
+  return browserSync.init({
     server: {
       baseDir: './dist',
       index: "index.html",
@@ -23,26 +17,56 @@ const browser = (done) => {
     startPath: 'index.html',
     open: 'external',
   });
-
-  done();
 };
 
-const build = () => 
-  gulp.src('./src/pages/**/*')
-    .pipe(gulp.dest('./dist'));
+const browserRoad = () => {
+  return browserSync.reload();
+}
 
-const browserRoad = (done) => {
-  browserSync.reload();
+const ImgImagemin = () => {
+  return gulp
+  .src("./assets/images/**.{jpg,jpeg,png}")
+    .pipe(imagemin())
+    .pipe(gulp.dest("./dist/images"))
+};
 
+const sassCompile = () => {
+  return gulp
+    .src(`src/sass/**/*.scss`)
+    .pipe(
+      sass({
+        outputStyle: "compressed"
+      })
+      .on("error", sass.logError)
+    )
+    .pipe(gulp.dest('dist/style'));
+}
+
+const htmlCompile = () => {
+  return gulp
+    .src('./src/pages/**/*')
+    .pipe(gulp.dest('dist'));
+}
+
+const fileWatch = () => {
+  gulp.watch(['./src/sass/**/*.scss'], gulp.parallel(sassCompile, browserRoad));
+  gulp.watch(['./src/pages/**/*'], gulp.parallel(htmlCompile, browserRoad));
+  gulp.watch(['./assets/images/**.{jpg,jpeg,png}'], gulp.parallel(ImgImagemin, browserRoad));
+};
+
+const buildTask = () => {
+  htmlCompile();
+  sassCompile();
+  ImgImagemin();
+}
+export default(done) => {
+  browser();
+  buildTask();
+  fileWatch();
   done();
 }
 
-const watch = () => {
-  gulp.watch(['./src/sass/**/*.scss'], gulp.parallel(sassCompile));
-  gulp.watch(['./src/pages/**/*'], gulp.parallel(build, browserRoad));
-};
-
-const buildTask = gulp.parallel(sassCompile, build);
-
-exports.default = gulp.series(buildTask, browser, watch);
-exports.build = gulp.series(buildTask);
+export const build = (done) => {
+  buildTask();
+  done();
+}
