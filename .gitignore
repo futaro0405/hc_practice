@@ -1,0 +1,4 @@
+# 以下除外ファイル
+bin/
+dist/
+node_modules/
