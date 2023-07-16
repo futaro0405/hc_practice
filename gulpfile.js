@@ -44,13 +44,13 @@ const sassCompile = () => {
 
 const htmlCompile = () => {
   return gulp
-    .src('./src/pages/**/*')
+    .src('src/pages/**/*')
     .pipe(gulp.dest('dist'));
 }
 
 const fileWatch = () => {
   gulp.watch(['./src/sass/**/*.scss'], gulp.parallel(sassCompile, browserRoad));
-  gulp.watch(['./src/pages/**/*'], gulp.parallel(htmlCompile, browserRoad));
+  gulp.watch(['./src/pages/index.html'], gulp.parallel(htmlCompile, browserRoad));
   gulp.watch(['./assets/images/**.{jpg,jpeg,png}'], gulp.parallel(ImgImagemin, browserRoad));
 };
 
