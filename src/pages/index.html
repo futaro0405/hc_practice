@@ -10,17 +10,36 @@
 
   <body>
     <header class="l-header">
-      <div class="l-header__logo">
-        <a href="/">
-          <img class="l-header__icon" src="/images/header_icon.png" alt="zenn">
+      <div class="l-header__inner">
+        <a class="l-header__iconWrap" href="/">
+          <img class="l-header__icon" src="images/Zenn.svg" alt="zenn">
         </a>
+  
+        <div class="l-header__right">
+          <a class="l-header__search" href="/search">
+            <img src="images/search.svg" alt="search">
+          </a>
+          <a class="m-button" href="/login">Log in</a>
+        </div>
       </div>
-
-      <a class="l-header__search" href="/search"><img src="/images/header_search.jpg" alt="search"></a>
-      <a class="l-header__button" href="/login">Login</a>
     </header>
 
     <main class="l-main">
+      <div class="l-profile">
+        <div class="l-profile__inner">
+          <a class="l-profile__name" href="/">
+            <img src="images/profileIcon.jpg" alt="" class="l-profile__iconImage">
+            <p class="l-profile__text">Zenn公式</p>
+          </a>
+
+          <div class="l-profile-right">
+            <details class="accordion">
+              <summary>目次</summary>
+              <p>枠線付きのシンプルなアコーディオンメニューです。</p>
+          </details>
+          </div>
+        </div>
+      </div>
       <div class="l-main__contentHeader">
         <h1 class="m-hdg1">Zennaaaの2種類の執筆方法についてaaaa</h1>
       </div>
@@ -39,17 +58,6 @@
           <dt class="m-infoList__title"></dt>
           <dd class="m-infoList__text"></dd>
         </dl>
-      </div>
-      <div class="m-profile">
-        <div class="m-profile__head">
-          <div class="m-profile__media">
-            <img  class="m-profile__icon" src="/images/profileIcon.jpg" alt="">
-          </div>
-          <div class="m-profile__title">
-
-          </div>
-
-        </div>
       </div>
 
       <div class="m-index">
