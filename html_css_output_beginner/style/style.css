@@ -16,20 +16,23 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  column-gap: 10px;
 }
 .header-title {
   background-color: #333;
-  padding: 5px 8px;
-}
-.header-title__text {
   color: #fff;
   font-size: 18px;
   font-weight: bold;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+  line-height: normal;
 }
 .header-list {
   display: flex;
   flex-direction: row;
-  column-gap: 10px;
+  column-gap: 20px;
+  padding: 0;
 }
 .header-listItem {
   list-style: none;
@@ -48,13 +51,16 @@ header {
 .mv-image {
   object-fit: cover;
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
+
 }
 section {
   width: 960px;
   max-width: 100%;
   padding: 0 4%;
   box-sizing: border-box;
+  margin: 0 auto 64px;
 }
 .hdg-02 {
   width: 100%;
@@ -62,7 +68,7 @@ section {
 }
 .hdg-02__text {
   display: inline-block;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
   border-bottom: 1px solid #333;
 }
@@ -71,7 +77,7 @@ section {
   text-align: center;
 }
 .hdg-03__text {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
 }
 .text {
@@ -86,16 +92,19 @@ section {
 .media-icon__image {
   object-fit: cover;
   border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  aspect-ratio: 1;
 }
 .panel {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 18px;
+  margin: 32px 0;
 }
 .panel__item {
   display: flex;
   flex-direction: column;
-  gap: 5px;
   justify-content: center;
   align-items: center;
 }
@@ -103,14 +112,35 @@ section {
   font-size: 16px;
   font-weight: bold;
   color: #333;
+  margin: 0;
 }
 .panel__text {
   font-size: 14px;
 }
 footer {
-  margin: 24px 0 0;
+  margin: 96px 0 0;
   border-bottom: 10px solid #333;
   width: 100%;
   text-align: center;
   padding-bottom: 10px;
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 600px) {
+  .layout {
+    flex-direction: row;
+    justify-content: space-around;
+    column-gap: 10px;
+  }
+  .layoutItem {
+    flex: 0 0 auto;
+  }
+  .hdg-03 {
+    text-align: start;
+  }
+  .panel {
+    flex-direction: row;
+  }
 }
