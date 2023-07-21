@@ -1,0 +1,146 @@
+body > * {
+  box-sizing: border-box;
+}
+img {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+header {
+  width: 100%;
+  padding: 5px 4%;
+}
+.header-inner {
+  width: 960px;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 10px;
+}
+.header-title {
+  background-color: #333;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+  line-height: normal;
+}
+.header-list {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  padding: 0;
+}
+.header-listItem {
+  list-style: none;
+  display: block;
+  font-size: 16px;
+}
+.header-listLink {
+  text-decoration: none;
+  color: #333;
+}
+.mv {
+  width: 100%;
+  height: 600px;
+  box-sizing: border-box;
+}
+.mv-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+
+}
+section {
+  width: 960px;
+  max-width: 100%;
+  padding: 0 4%;
+  box-sizing: border-box;
+  margin: 0 auto 64px;
+}
+.hdg-02 {
+  width: 100%;
+  text-align: center;
+}
+.hdg-02__text {
+  display: inline-block;
+  font-size: 32px;
+  font-weight: bold;
+  border-bottom: 1px solid #333;
+}
+.hdg-03 {
+  width: 100%;
+  text-align: center;
+}
+.hdg-03__text {
+  font-size: 18px;
+  font-weight: bold;
+}
+.text {
+  margin-bottom: 10px;
+}
+.text-item {
+  font-size: 14px;
+}
+.media-icon {
+  text-align: center;
+}
+.media-icon__image {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  aspect-ratio: 1;
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 32px 0;
+}
+.panel__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.panel__title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+.panel__text {
+  font-size: 14px;
+}
+footer {
+  margin: 96px 0 0;
+  border-bottom: 10px solid #333;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 600px) {
+  .layout {
+    flex-direction: row;
+    justify-content: space-around;
+    column-gap: 10px;
+  }
+  .layoutItem {
+    flex: 0 0 auto;
+  }
+  .hdg-03 {
+    text-align: start;
+  }
+  .panel {
+    flex-direction: row;
+  }
+}
