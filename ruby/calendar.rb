@@ -33,7 +33,7 @@ class Calendar
   def judge(year, month)
     if year.negative? || year > 9999
       raise "#{year} is an invalid number (0..9999)"
-    elsif month.negative? || month > 12
+    elsif month <= 0 || month > 12
       raise "#{month} is neither a month number (1..12) nor a name"
     end
   end
@@ -67,8 +67,8 @@ end
 
 option = SetParams.new
 calendar = Calendar.new(
-  (option.get(:year) || Time.zone.today.year).to_i,
-  (option.get(:month) || Time.zone.today.month).to_i
+  (option.get(:year) || Date.today.year).to_i,
+  (option.get(:month) || Date.today.month).to_i
 )
 
 calendar.output
