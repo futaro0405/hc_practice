@@ -1,4 +1,13 @@
 class Golf
+  SCORE_LIST = {
+    -1=> 'ボギー',
+    0 => "パー",
+    1 => "バーディー",
+    2 => "イーグル",
+    3 => "アルバトロス",
+    4 => "コンドル"
+  }
+
   def availability?(par, score)
     if par < 3 || par > 5
       raise "#{par} is an invalid value (3..5)"
@@ -11,24 +20,12 @@ class Golf
     availability?(par, score)
     judge = (par - score)
 
-    if judge.negative?
-      if judge.abs == 1
-        "ボギー"
-      else
-        "#{judge.abs}ボギー"
-      end
-    elsif judge == 4 && par == 5
-      "コンドル"
-    elsif score == 1
+    if par != 5 && score == 1
       "ホールインワン"
-    elsif judge == 3
-      "アルバトロス"
-    elsif judge == 2
-      "イーグル"
-    elsif judge == 1
-      "バーディ"
-    elsif judge.zero?
-      "パー"
+    elsif judge <= -2
+      "#{-1*judge}ボギー"
+    else
+      SCORE_LIST[judge]
     end
   end
 end
