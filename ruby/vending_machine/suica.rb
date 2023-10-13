@@ -5,14 +5,10 @@ class Suica
     @deposit = INIT_DEPOST
   end
 
-  def deposit
-    @deposit
-  end
-  
+  attr_reader :deposit
+
   def charge(money)
-    if money < 100
-      raise "money:#{money} The amount is less than 100"
-    end
+    raise "money:#{money} The amount is less than 100" if money < 100
 
     add(money)
   end
@@ -22,6 +18,7 @@ class Suica
   end
 
   private
+
   def add(money)
     @deposit += money
   end
