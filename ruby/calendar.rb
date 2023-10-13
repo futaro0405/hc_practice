@@ -11,11 +11,6 @@ class SetParams
     end
   end
 
-  # オプションが指定されたか
-  def has?(option)
-    @options.include(option)
-  end
-
   # オプションのパラメータを取得
   def get(option)
     @options[option]
@@ -33,7 +28,7 @@ class Calendar
   def judge(year, month)
     if year.negative? || year > 9999
       raise "#{year} is an invalid number (0..9999)"
-    elsif month <= 0 || month > 12
+    elsif !(0..12).cover?(month)
       raise "#{month} is neither a month number (1..12) nor a name"
     end
   end
