@@ -1,9 +1,9 @@
 class Juice
 
-  def initialize(name, money, number = 1)
+  def initialize(name, money, stock)
     @name = name
     @money = money
-    @number = number
+    @stock = stock
   end
 
   def name
@@ -14,7 +14,11 @@ class Juice
     @money
   end
 
-  def number
-    @number
+  def stock
+    @stock
+  end
+
+  def sells
+    @stock -= 1
   end
 end

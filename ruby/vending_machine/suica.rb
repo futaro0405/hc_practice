@@ -5,16 +5,16 @@ class Suica
     @deposit = INIT_DEPOST
   end
 
+  def deposit
+    @deposit
+  end
+  
   def charge(money)
     if money < 100
       raise "money:#{money} The amount is less than 100"
     end
 
     add(money)
-  end
-
-  def deposit
-    @deposit
   end
 
   def subtract(money)
