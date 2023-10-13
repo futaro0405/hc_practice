@@ -40,5 +40,6 @@ class Machine
   end
 
   def sales
-    @@sales
+    @sales
   end
+end
