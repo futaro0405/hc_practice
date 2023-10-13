@@ -10,7 +10,7 @@ class Pokemon
   end
 
   def change_name(new_name)
-    return puts '不適切な名前です' if new_name == 'あああ'
+    return puts '不適切な名前です' if new_name == 'うんこ'
 
     @name = new_name
   end
