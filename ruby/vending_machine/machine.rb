@@ -2,15 +2,12 @@ require_relative './juice'
 require_relative './suica'
 
 class Machine
-  @@pepsi   = Juice.new("pepsi", 150, 5)
-  @@monster = Juice.new("monster", 230, 5)
-  @@ilohas  = Juice.new("ilohas", 120, 5)
-  @@juices = {
-    pepsi: @@pepsi,
-    monster: @@monster,
-    ilohas: @@ilohas
-  }
   @@sales = 0
+  @@juices = {
+    pepsi:   @@pepsi   = Juice.new("pepsi", 150, 5),
+    monster: @@monster = Juice.new("monster", 230, 5),
+    ilohas:  @@ilohas  = Juice.new("ilohas", 120, 5)
+  }
 
   def initialize(suica)
     @suica = suica
@@ -23,11 +20,12 @@ class Machine
   def list
     list = []
     @@juices.values.each do |juice|
-      if juice.stock > 0
-        list << juice.name
+      if juice.stock > 0 && @suica.deposit >= juice.money
+        list.push(juice.name)
       end
     end
 
+    return 'なし' if list.size < 1
     list
   end
 
@@ -49,19 +47,3 @@ class Machine
     @@sales
   end
 end
-
-suica = Suica.new()
-puts "現在の残高：#{suica.deposit}"
-puts "SUICAに100円チャージ"
-suica.charge(100)
-puts "現在の残高：#{suica.deposit}"
-
-puts "===================="
-machine = Machine.new(suica)
-puts "pepsiの在庫：#{machine.stock("pepsi")}"
-puts "pepsiを購入する"
-machine.buy("pepsi")
-puts "pepsiの在庫：#{machine.stock("pepsi")}"
-puts "売上金額：#{machine.sales} チャージ残高：#{suica.deposit}"
-puts "商品のリスト："
-machine.list
