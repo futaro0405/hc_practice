@@ -1,11 +1,10 @@
 class Juice
-  def initialize(name, money, stock)
+  def initialize(name, money)
     @name = name
     @money = money
-    @stock = stock
   end
 
-  attr_reader :name, :money, :stock
+  attr_reader :name, :money
 
   def sells
     @stock -= 1
