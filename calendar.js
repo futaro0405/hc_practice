@@ -20,6 +20,16 @@ const today = new Date();
 const setYear = parsedArgs.values.year || today.getFullYear();
 const setMonth = parsedArgs.values.month - 1 || today.getMonth();
 
+try {
+  if (setYear < 0 || setYear > 9999) {
+    throw new Error(`${setYear} is an invalid number (0..9999)`);
+  }else if(setMonth < 1 || setMonth > 12) {
+    throw new Error(`${setMonth} is neither a month number (1..12) nor a name`);
+  }
+} catch(e) {
+  console.error(e.message);
+}
+
 const week = ["日", "月", "火", "水", "木", "金", "土"];
 let showDate = new Date(setYear, setMonth, 1);
 
