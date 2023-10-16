@@ -2,33 +2,6 @@ const { parseArgs } = require("node:util");
 
 "use strict";
 
-const show = (date) => {
-  let year = date.getFullYear();
-  let month = date.getMonth();
-  const week = ["日", "月", "火", "水", "木", "金", "土"];
-
-  console.log(`      ${month + 1}月 ${year}`);
-  console.log(week.join(" "));
-
-  let startDayOfWeek = new Date(year, month, 1).getDay();
-  let endDate = new Date(year, month + 1, 0).getDate();
-  let arrDay = [];
-
-  for (let i = 0; i < startDayOfWeek; i++) {
-    arrDay.push("   ");
-  }
-  for (let i = 1; i <= endDate; i++) {
-    arrDay.push((" " + i).slice(-2));
-
-    if ((startDayOfWeek + i) % 7 === 0) {
-      arrDay.push('\n');
-    }else {
-      arrDay.push(" ");
-    }
-  }
-  console.log(arrDay.join(""));
-}
-
 const setOption = () => {
   const options = {
     year: {
@@ -56,6 +29,33 @@ const setOption = () => {
   }
 
   return [setYear, setMonth];
+};
+
+const show = (date) => {
+  let year = date.getFullYear();
+  let month = date.getMonth();
+  const week = ["日", "月", "火", "水", "木", "金", "土"];
+
+  console.log(`      ${month + 1}月 ${year}`);
+  console.log(week.join(" "));
+
+  let startDayOfWeek = new Date(year, month, 1).getDay();
+  let endDate = new Date(year, month + 1, 0).getDate();
+  let arrDay = [];
+
+  for (let i = 0; i < startDayOfWeek; i++) {
+    arrDay.push("   ");
+  }
+  for (let i = 1; i <= endDate; i++) {
+    arrDay.push((" " + i).slice(-2));
+
+    if ((startDayOfWeek + i) % 7 === 0) {
+      arrDay.push('\n');
+    }else {
+      arrDay.push(" ");
+    }
+  }
+  console.log(arrDay.join(""));
 };
 
 try {
