@@ -8,24 +8,25 @@
 <script src="main.js"></script>
 </head>
 <body>
-  <h1>TODO LIST</h1>
+<main class="l-main">
+  <h1 class="c-hdg1">TODO LIST</h1>
 
-  <form action="">
+  <form class="c-form" action="">
     <input id="js-input" class="c-input" type="text">
     <button id="js-submit" class="c-submit">保存</button>
   </form>
 
+  <h2 class="c-hdg2">Tasks</h2>
   <div class="c-box">
-    <h2 class="c-box__title">Tasks</h2>
-
     <ul id="js-list" class="c-list">
       <li class="c-list__item">
         <input class="c-list__check" type="checkbox">
-        <input class="c-list__text" type="text" value="zzz">
+        <input class="c-list__text" type="text" value="zzz" disabled>
         <button class="c-list__edit">edit</button>
         <button class="c-list__delete">delete</button>
       </li>
     </ul>
   </div>
+</main>
 </body>
 </html>
