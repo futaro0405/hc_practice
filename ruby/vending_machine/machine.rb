@@ -2,16 +2,15 @@ require_relative 'juice'
 require_relative 'suica'
 
 class Machine
-  def initialize(suica)
-    @suica = suica
+  def initialize()
     @sales = 0
-    @pepsi   = Juice.new("pepsi", 150)
-    @monster = Juice.new("monster", 230)
-    @ilohas  = Juice.new("ilohas", 120)
+    pepsi   = Juice.new("pepsi", 150)
+    monster = Juice.new("monster", 230)
+    ilohas  = Juice.new("ilohas", 120)
     @juices = {
-      pepsi:   [@pepsi, 5],
-      monster: [@monster, 5],
-      ilohas:  [@ilohas, 5],
+      pepsi:   [pepsi, 5],
+      monster: [monster, 5],
+      ilohas:  [ilohas, 5],
     }
   end
 
@@ -19,10 +18,10 @@ class Machine
     @juices[name.to_sym][1]
   end
 
-  def list
+  def list(suica)
     list = []
     @juices.each_value do |juice|
-      list.push(juice[0].name) if juice[1].positive? && @suica.deposit >= juice[0].money
+      list.push(juice[0].name) if juice[1].positive? && suica.deposit >= juice[0].money
     end
 
     return 'なし' if list.empty?
@@ -30,16 +29,16 @@ class Machine
     list
   end
 
-  def buy(name)
-    return "Insufficient charge balance or out of stock" if @juices[name.to_sym][1] < 1 || @suica.deposit < @juices[name.to_sym][0].money
+  def buy(name, suica)
+    return "Insufficient charge balance or out of stock" if @juices[name.to_sym][1] < 1 || suica.deposit < @juices[name.to_sym][0].money
 
     @juices[name.to_sym][1] -= 1
-    add_sales(@juices[name.to_sym][0].money)
+    add_sales(@juices[name.to_sym][0].money, suica)
   end
 
-  def add_sales(sales)
+  def add_sales(sales, suica)
     @sales += sales
-    @suica.subtract(sales)
+    suica.subtract(sales)
   end
 
   def sales
