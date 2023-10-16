@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TodoList</title>
+<link rel="stylesheet" href="style.css">
+<script src="main.js"></script>
+</head>
+<body>
+  <h1>TODO LIST</h1>
+
+  <form action="">
+    <input id="js-input" class="c-input" type="text">
+    <button id="js-submit" class="c-submit">保存</button>
+  </form>
+
+  <div class="c-box">
+    <h2 class="c-box__title">Tasks</h2>
+
+    <ul id="js-list" class="c-list">
+      <li class="c-list__item">
+        <input class="c-list__check" type="checkbox">
+        <input class="c-list__text" type="text" value="zzz">
+        <button class="c-list__edit">edit</button>
+        <button class="c-list__delete">delete</button>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
