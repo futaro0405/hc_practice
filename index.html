@@ -11,22 +11,37 @@
 <main class="l-main">
   <h1 class="c-hdg1">TODO LIST</h1>
 
+  <p class="c-count">
+    <span class="c-count-all">全てのタスク：</span>
+    <span class="c-count-all__count"></span>
+    <span class="c-count-end">完了済み：</span>
+    <span class="c-count-end__count"></span>
+    <span class="c-count-progress">未完了：</span>
+    <span class="c-count-progress__count"></span>
+  </p>
+
   <form class="c-form" action="">
-    <input id="js-input" class="c-input" type="text">
+    <input id="js-input" class="c-input" type="text" placeholder="TASK">
     <button id="js-submit" class="c-submit">保存</button>
   </form>
 
   <h2 class="c-hdg2">Tasks</h2>
-  <div class="c-box">
-    <ul id="js-list" class="c-list">
-      <li class="c-list__item">
-        <input class="c-list__check" type="checkbox">
-        <input class="c-list__text" type="text" value="zzz" disabled>
-        <button class="c-list__edit">edit</button>
-        <button class="c-list__delete">delete</button>
-      </li>
-    </ul>
-  </div>
+
+  <ul id="js-list" class="c-list">
+    <li class="c-list__item">
+      <input class="c-list__check" type="checkbox">
+      <input class="c-list__text" type="text" value="zzz" disabled>
+      <button class="c-list__edit">edit</button>
+      <button class="c-list__delete">delete</button>
+    </li>
+
+    <li class="c-list__item">
+      <input class="c-list__check" type="checkbox">
+      <input class="c-list__text" type="text" value="zzz" disabled>
+      <button class="c-list__edit">edit</button>
+      <button class="c-list__delete">delete</button>
+    </li>
+  </ul>
 </main>
 </body>
 </html>
