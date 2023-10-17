@@ -16,6 +16,10 @@ window.addEventListener('DOMContentLoaded', function() {
     listCheck.classList.add('c-list__check');
     listCheck.type = 'checkbox';
 
+    listCheck.addEventListener('change', () => {
+      countTask();
+    });
+
     let listText = document.createElement('input');
     listText.classList.add('c-list__text');
     listText.type = 'text';
@@ -64,20 +68,32 @@ window.addEventListener('DOMContentLoaded', function() {
     const intext = listItem.getElementsByClassName('c-list__text');
     intext.value = task;
     list.appendChild(listItem);
+    countTask();
   }
 
   const countTask = () => {
-    const allCount = list.childElementCount;
-    const checkItem = list.getElementsByClassName("c-list__check").check;
-    for(let i = 0; i < list.length; i++) {
+    const textAll = document.getElementById('js-allCount');
+    const textDone = document.getElementById('js-doneCount');
+    const textNotDone = document.getElementById('js-notDoneCount');
 
+    let doneCount = 0;
+    for(let i = 0; i < list.children.length; i++) {
+      if(list.children[i].getElementsByTagName('input')[0].checked) {
+        doneCount++;
+      }
     }
-  }
 
+    textAll.innerHTML = list.children.length;
+    textDone.innerHTML = doneCount;
+    textNotDone.innerHTML = list.children.length - doneCount;
+  }
+  
   submit.addEventListener('click', e => {
     e.preventDefault();
     const task = input.value;
     addTask(task);
     input.value = '';
   });
+
+  countTask();
 });
