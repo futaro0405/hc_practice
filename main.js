@@ -1,36 +1,83 @@
-const taskValue = document.getElementsByClassName('task_value')[0];
-const taskSubmit = document.getElementsByClassName('task_submit')[0];
-const taskList = document.getElementsByClassName('task_list')[0];
+"use strict";
 
-// 追加ボタンを作成
-const addTasks = (task) => {
-  // 入力したタスクを追加・表示
-  const listItem = document.createElement('li');
-  const showItem = taskList.appendChild(listItem);
-  showItem.innerHTML = task;
+window.addEventListener('DOMContentLoaded', function() {
+  const input = document.getElementById('js-input');
+  const submit = document.getElementById('js-submit');
+  const list = document.getElementById('js-list');
 
-  // タスクに削除ボタンを付与
-  const deleteButton = document.createElement('button');
-  deleteButton.innerHTML = 'Delete';
-  listItem.appendChild(deleteButton);
+  const deleteTasks = (deleteButton) => {
+    const deleteTask = deleteButton.parentNode;
+    list.removeChild(deleteTask);
+  }
 
-  // 削除ボタンをクリックし、イベントを発動（タスクが削除）
-  deleteButton.addEventListener('click', evt => {
-    evt.preventDefault();
-    deleteTasks(deleteButton);
+  const createListItem = (task) => {
+    let fragment = document.createDocumentFragment();
+    let listCheck = document.createElement('input');
+    listCheck.classList.add('c-list__check');
+    listCheck.type = 'checkbox';
+
+    let listText = document.createElement('input');
+    listText.classList.add('c-list__text');
+    listText.type = 'text';
+    listText.value = task;
+    listText.disabled = true;
+
+    let editButton = document.createElement('button');
+    editButton.classList.add('c-list__edit');
+    editButton.textContent = 'edit';
+
+    let deleteButton = document.createElement('button');
+    deleteButton.classList.add('c-list__delete');
+    deleteButton.textContent = 'delete';
+
+    fragment.appendChild(listCheck);
+    fragment.appendChild(listText);
+    fragment.appendChild(editButton);
+    fragment.appendChild(deleteButton);
+
+    editButton.addEventListener('click', e => {
+      e.preventDefault();
+
+      if (editButton.classList.contains('is-active')) {
+        listText.disabled = true;
+        editButton.classList.remove('is-active');
+      }else{
+        listText.disabled = false;
+        editButton.classList.add('is-active');
+      }
+    });
+
+    deleteButton.addEventListener('click', e => {
+      e.preventDefault();
+      deleteTasks(deleteButton);
+    });
+
+    return fragment;
+  }
+
+  const addTask = (task) => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('c-list__item');
+    let fragment = createListItem(task);
+    listItem.appendChild(fragment);
+
+    const intext = listItem.getElementsByClassName('c-list__text');
+    intext.value = task;
+    list.appendChild(listItem);
+  }
+
+  const countTask = () => {
+    const allCount = list.childElementCount;
+    const checkItem = list.getElementsByClassName("c-list__check").check;
+    for(let i = 0; i < list.length; i++) {
+
+    }
+  }
+
+  submit.addEventListener('click', e => {
+    e.preventDefault();
+    const task = input.value;
+    addTask(task);
+    input.value = '';
   });
-};
-
-// 削除ボタンにタスクを消す機能を付与
-const deleteTasks = (deleteButton) => {
-  const chosenTask = deleteButton.closest('li');
-  taskList.removeChild(chosenTask);
-};
-
-// 追加ボタンをクリックし、イベントを発動（タスクが追加）
-taskSubmit.addEventListener('click', evt => {
-  evt.preventDefault();
-  const task = taskValue.value;
-  addTasks(task);
-  taskValue.value = '';
 });
