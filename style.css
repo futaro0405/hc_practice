@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* 
+/*
 #05324F
 #088699
 #7ED0CF
@@ -48,13 +48,22 @@
   border: none;
   box-sizing: border-box;
 }
+.c-count {
+  padding: 16px 24px;
+  background-color: #7ED0CF;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  column-gap: 16px;
+}
 .c-list {
   padding: 16px 24px;
   background-color: #7ED0CF;
   display: flex;
   flex-direction: column;
   row-gap: 8px;
-  min-height: 400px;
+  min-height: 200px;
 }
 .c-list__item {
   list-style: none;
@@ -72,8 +81,7 @@
   box-sizing: border-box;
 }
 .c-list__text:disabled {
-  border: 1px solid #088699;
-  background-color: #fff;
+  background-color: transparent;
 }
 .c-list__edit {
   background-color: #fff;
