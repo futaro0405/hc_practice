@@ -11,15 +11,6 @@
 <main class="l-main">
   <h1 class="c-hdg1">TODO LIST</h1>
 
-  <p class="c-count">
-    <span class="c-count-all">全てのタスク：</span>
-    <span id="js-allCount"></span>
-    <span class="c-count-end">完了済み：</span>
-    <span id="js-doneCount"></span>
-    <span class="c-count-notDone">未完了：</span>
-    <span id="js-notDoneCount"></span>
-  </p>
-
   <form class="c-form" action="">
     <input id="js-input" class="c-input" type="text" placeholder="TASK">
     <button id="js-submit" class="c-submit">保存</button>
@@ -27,8 +18,13 @@
 
   <h2 class="c-hdg2">Tasks</h2>
 
-  <ul id="js-list" class="c-list">
-  </ul>
+  <p class="c-count">
+    <span id="js-allCount"></span>
+    <span id="js-doneCount"></span>
+    <span id="js-notDoneCount"></span>
+  </p>
+
+  <ul id="js-list" class="c-list"></ul>
 </main>
 </body>
 </html>
