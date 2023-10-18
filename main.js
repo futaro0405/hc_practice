@@ -16,7 +16,9 @@ window.addEventListener('DOMContentLoaded', () => {
     let listCheck = document.createElement('input');
     listCheck.classList.add('c-list__check');
     listCheck.type = 'checkbox';
-    listCheck.addEventListener('change', countTask());
+    listCheck.addEventListener('change', () => {
+      countTask()
+    });
 
     let listText = document.createElement('input');
     listText.classList.add('c-list__text');
@@ -26,22 +28,24 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let editButton = document.createElement('button');
     editButton.classList.add('c-list__edit');
-    editButton.textContent = 'edit';
+    editButton.textContent = '編集';
     editButton.addEventListener('click', e => {
       e.preventDefault();
 
       if (editButton.classList.contains('is-active')) {
         listText.disabled = true;
         editButton.classList.remove('is-active');
+        editButton.textContent = '編集';
       }else{
         listText.disabled = false;
         editButton.classList.add('is-active');
+        editButton.textContent = '保存';
       }
     });
 
     let deleteButton = document.createElement('button');
     deleteButton.classList.add('c-list__delete');
-    deleteButton.textContent = 'delete';
+    deleteButton.textContent = '削除';
     deleteButton.addEventListener('click', e => {
       e.preventDefault();
 
@@ -51,8 +55,9 @@ window.addEventListener('DOMContentLoaded', () => {
         deleteTasks(deleteButton);
         console.log('taskを削除しました');
       } else {
-        console.log('task削除をキャンセルしました');
+        console.log('taskを削除しませんでした');
       }
+      countTask();
     });
 
     fragment.appendChild(listCheck);
