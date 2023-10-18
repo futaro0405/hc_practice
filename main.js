@@ -1,6 +1,6 @@
 "use strict";
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('js-input');
   const submit = document.getElementById('js-submit');
   const list = document.getElementById('js-list');
@@ -12,13 +12,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
   const createListItem = (task) => {
     let fragment = document.createDocumentFragment();
+
     let listCheck = document.createElement('input');
     listCheck.classList.add('c-list__check');
     listCheck.type = 'checkbox';
-
-    listCheck.addEventListener('change', () => {
-      countTask();
-    });
+    listCheck.addEventListener('change', countTask());
 
     let listText = document.createElement('input');
     listText.classList.add('c-list__text');
@@ -29,16 +27,6 @@ window.addEventListener('DOMContentLoaded', function() {
     let editButton = document.createElement('button');
     editButton.classList.add('c-list__edit');
     editButton.textContent = 'edit';
-
-    let deleteButton = document.createElement('button');
-    deleteButton.classList.add('c-list__delete');
-    deleteButton.textContent = 'delete';
-
-    fragment.appendChild(listCheck);
-    fragment.appendChild(listText);
-    fragment.appendChild(editButton);
-    fragment.appendChild(deleteButton);
-
     editButton.addEventListener('click', e => {
       e.preventDefault();
 
@@ -51,10 +39,26 @@ window.addEventListener('DOMContentLoaded', function() {
       }
     });
 
+    let deleteButton = document.createElement('button');
+    deleteButton.classList.add('c-list__delete');
+    deleteButton.textContent = 'delete';
     deleteButton.addEventListener('click', e => {
       e.preventDefault();
-      deleteTasks(deleteButton);
+
+      const result = window.confirm('本当に削除してもよろしいですか？');
+
+      if (result) {
+        deleteTasks(deleteButton);
+        console.log('taskを削除しました');
+      } else {
+        console.log('task削除をキャンセルしました');
+      }
     });
+
+    fragment.appendChild(listCheck);
+    fragment.appendChild(listText);
+    fragment.appendChild(editButton);
+    fragment.appendChild(deleteButton);
 
     return fragment;
   }
@@ -83,11 +87,11 @@ window.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    textAll.innerHTML = list.children.length;
-    textDone.innerHTML = doneCount;
-    textNotDone.innerHTML = list.children.length - doneCount;
+    textAll.innerHTML = `全てのタスク：${list.children.length}`;
+    textDone.innerHTML = `完了済み：${doneCount}`;
+    textNotDone.innerHTML = `未完了：${list.children.length - doneCount}`;
   }
-  
+
   submit.addEventListener('click', e => {
     e.preventDefault();
     const task = input.value;
