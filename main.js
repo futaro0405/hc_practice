@@ -84,17 +84,18 @@ window.addEventListener('DOMContentLoaded', () => {
     const textAll = document.getElementById('js-allCount');
     const textDone = document.getElementById('js-doneCount');
     const textNotDone = document.getElementById('js-notDoneCount');
+    const listLength = list.children.length;
 
     let doneCount = 0;
-    for(let i = 0; i < list.children.length; i++) {
+    for(let i = 0; i < listLength; i++) {
       if(list.children[i].getElementsByTagName('input')[0].checked) {
         doneCount++;
       }
     }
 
-    textAll.innerHTML = `全てのタスク：${list.children.length}`;
+    textAll.innerHTML = `全てのタスク：${listLength}`;
     textDone.innerHTML = `完了済み：${doneCount}`;
-    textNotDone.innerHTML = `未完了：${list.children.length - doneCount}`;
+    textNotDone.innerHTML = `未完了：${listLength - doneCount}`;
   }
 
   submit.addEventListener('click', e => {
