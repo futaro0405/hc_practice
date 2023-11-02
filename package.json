@@ -1,0 +1,31 @@
+{
+  "name": "js_kimetsu_list",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build && html-beautify dist/**/*.html",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "5.0.0",
+    "autoprefixer": "10.4.16",
+    "css-declaration-sorter": "7.1.1",
+    "js-beautify": "1.14.9",
+    "postcss": "8.4.31",
+    "postcss-normalize-charset": "6.0.0",
+    "postcss-sort-media-queries": "5.2.0",
+    "sass": "1.69.5",
+    "vite": "4.4.5"
+  },
+  "browserslist": [
+    "last 3 versions",
+    "> 5%",
+    "Firefox ESR",
+    "not dead"
+  ],
+  "dependencies": {
+    "modern-css-reset": "1.4.0"
+  }
+}

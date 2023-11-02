@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+  <link rel="stylesheet" href="common/scss/reset.scss">
+  <link rel="stylesheet" href="common/scss/style.scss">
+  <script src="common/js/main.js" defer></script>
+</head>
+
+<body>
+<main class="l-main">
+  <div class="l-main__inner">
+    <form action="" class="m-form">
+      <fieldset class="m-form__field">
+        <legend class="m-form__legend">select</legend>
+
+        <div class="m-form__item">
+          <label class="m-form__label" for="">
+            <input class="m-form__radio" type="radio" value="all" name="group" checked>
+            <span class="m-form__text">all</span>
+          </label>
+
+          <label class="m-form__label" for="">
+            <input class="m-form__radio" type="radio" value="group1" name="group">
+            <span class="m-form__text">group1</span>
+          </label>
+
+          <label class="m-form__label" for="">
+            <input class="m-form__radio" type="radio" value="group2" name="group">
+            <span class="m-form__text">group2</span>
+          </label>
+
+          <label class="m-form__label" for="">
+            <input class="m-form__radio" type="radio" value="group3" name="group">
+            <span class="m-form__text">group3</span>
+          </label>
+        </div>
+      </fieldset>
+    </form>
+    <!-- /.m-form -->
+
+
+<ul class="m-panel" id="js-panel">
+
+<template class="js-panel__template">
+<li class="m-panel__item">
+<div class="m-contnet">
+<b class="m-panel__name">name</b>
+<ul class="m-panel__badge">
+<li class="m-panel__badgeItem">badge</li>
+</ul>
+</div>
+
+<div class="m-panel__media">
+<img class="m-panel__image" src="" alt="">
+</div>
+</li>
+</template>
+
+<template class="m-panel__templateError">
+<p>Not found</p>
+</template>
+
+</ul>
+<!-- /.m-panel -->
+  </div>
+</main>
+<!-- /.l-main -->
+</body>
+</html>

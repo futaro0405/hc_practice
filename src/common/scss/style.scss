@@ -1,0 +1,12 @@
+.l-main {
+  display: grid;
+  gap: 0 24px;
+  grid-template-columns:
+    1fr
+    minmax(375px - (24px * 2), 1000px)
+    1fr;
+
+  &__inner {
+    grid-column: 2/3;
+  }
+}
