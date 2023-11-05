@@ -10,3 +10,24 @@
     grid-column: 2/3;
   }
 }
+
+.m-filter {
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;  
+  padding: 16px 24px;
+  justify-content: space-around;
+
+  input {
+    display: block;
+    background-color: #333;
+  }
+}
+
+.m-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+}
