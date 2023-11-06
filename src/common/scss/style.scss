@@ -47,10 +47,10 @@
     border-radius: 50%;
     width: 1em;
     height: 1em;
+  }
 
-    &:checked::before {
-      
-    }
+  label {
+    padding-left: 1.2em;
   }
 }
 
