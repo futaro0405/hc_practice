@@ -22,6 +22,10 @@
   }
 
   function outputData(json) {
+    const panel = document.getElementById("js-panel");
+    const panelClone = panel.cloneNode(false);
+    panel.parentNode.replaceChild(panelClone, panel);
+
     const template = document.querySelector('.js-panel__template').content;
     const fragment = document.createDocumentFragment();
     for(const data of json) {
@@ -38,14 +42,14 @@
       fragment.appendChild(clone);
     }
 
-    document.getElementById('js-panel').appendChild(fragment);
+    panelClone.appendChild(fragment);
   };
 
   async function callApi(apiKey) {
     try {
       const res = await fetch(apiKey);
       if(!res.ok) {
-        throw new Error("API Can't be loaded")
+        throw new Error("API Can't be loaded");
       }
       const data = await res.json();
       console.log(data);
