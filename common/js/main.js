@@ -1,32 +1,33 @@
 (() => {
   const apiKey ={
-    all: "https://ihatov08.github.io/kimetsu_api/api/all.json",
+    all:     "https://ihatov08.github.io/kimetsu_api/api/all.json",
     hashira: "https://ihatov08.github.io/kimetsu_api/api/hashira.json",
-    oni: "https://ihatov08.github.io/kimetsu_api/api/oni.json",
+    oni:     "https://ihatov08.github.io/kimetsu_api/api/oni.json",
     kisatsu: "https://ihatov08.github.io/kimetsu_api/api/kisatsutai.json"
   }
 
   const filter = document.getElementById('js-filter');
   const categories = filter.querySelectorAll('input[name=category]');
 
-  const selectItem = () => {
+  function selectItem() {
     for(let i = 0; i < categories.length; i++) {
       if(categories.item(i).checked) {
         checkValue = categories.item(i).value;
+        console.log(apiKey[checkValue]);
         break;
       }
     }
 
-    callApi(apiKey.checkValue);
+    callApi(apiKey[checkValue]);
   }
 
-  categories.forEach((category) => {
-    category.addEventListener('change', selectItem);
-  });
-
-  const outputData = (json) => {
+  function outputData(json) {
+    const panel = document.getElementById("js-panel");
+    const panelClone = panel.cloneNode(false);
+    panel.parentNode.replaceChild(panelClone, panel);
     const template = document.querySelector('.js-panel__template').content;
     const fragment = document.createDocumentFragment();
+
     for(const data of json) {
       const clone = document.importNode(template, true);
       const cloneName = clone.querySelector('.m-panel__name');
@@ -41,26 +42,31 @@
       fragment.appendChild(clone);
     }
 
-    document.getElementById('js-panel').appendChild(fragment);
+    panelClone.appendChild(fragment);
   };
 
-  const callApi = async (apiKey) => {
+  async function callApi(apiKey) {
     try {
       const res = await fetch(apiKey);
-      if(!res.ok) {
-        throw new Error("API Can't be loaded")
-      }
       const data = await res.json();
-      console.log(data);
+
+      if(!res.ok) {
+        throw new Error("API Can't be loaded");
+      }
+
       outputData(data);
     } catch(error) {
       console.error('error', error);
     }
   };
 
-  // const init = () => {
-  //   callApi();
-  // };
+  const init = () => {
+    selectItem();
+  };
 
-  // init();
+  categories.forEach((category) => {
+    category.addEventListener('change', selectItem);
+  });
+
+  init();
 })();
