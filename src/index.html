@@ -1,49 +1,49 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title></title>
-  <link rel="stylesheet" href="common/scss/destyle.scss">
-  <link rel="stylesheet" href="common/scss/style.scss">
-  <script src="common/js/main.js" defer></script>
+<meta charset="UTF-8" />
+<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title></title>
+<link rel="stylesheet" href="common/scss/destyle.scss">
+<link rel="stylesheet" href="common/scss/style.scss">
+<script src="common/js/main.js" defer></script>
 </head>
 
 <body>
 <main class="l-main">
-  <div class="l-main__inner">
-    <ul class="m-filter" id="js-filter">
-      <li><input type="radio" name="category" id="radio_all" value="all" checked><label for="radio_all">全キャラクター</label></li>
-      <li><input type="radio" name="category" id="radio_kisatsu" value="kisatsu"><label for="radio_kisatsu">鬼殺隊</label></li>
-      <li><input type="radio" name="category" id="radio_hashira" value="hashira"><label for="radio_hashira">柱</label></li>
-      <li><input type="radio" name="category" id="radio_oni" value="oni"><label for="radio_oni">鬼</label></li>
-    </ul>
+<div class="l-main__inner">
+<ul class="m-filter" id="js-filter">
+<li><input type="radio" name="category" id="radio_all" value="all" checked><label for="radio_all">全キャラクター</label></li>
+<li><input type="radio" name="category" id="radio_kisatsu" value="kisatsu"><label for="radio_kisatsu">鬼殺隊</label></li>
+<li><input type="radio" name="category" id="radio_hashira" value="hashira"><label for="radio_hashira">柱</label></li>
+<li><input type="radio" name="category" id="radio_oni" value="oni"><label for="radio_oni">鬼</label></li>
+</ul><!-- /.m-filter -->
 
 
-    <ul class="m-panel" id="js-panel">
+<ul class="m-panel" id="js-panel"></ul>
 
-      <template class="js-panel__template">
-        <li class="m-panel__item">
-          <div class="m-contnet">
-            <b class="m-panel__name"></b>
-            <ul class="m-panel__badge">
-              <li class="m-panel__badgeItem"></li>
-            </ul>
-          </div>
 
-          <div class="m-panel__media">
-            <img class="m-panel__image" src="" alt="">
-          </div>
-        </li>
-      </template>
+<template class="js-panel__template">
+<li class="m-panel__item">
+<div class="m-panel__contnet">
+<b class="m-panel__name"></b>
+<ul class="m-panel__badge">
+<li class="m-panel__badgeItem"></li>
+</ul>
+</div>
 
-      <template class="m-panel__templateError">
-        <li>Not found</li>
-      </template>
+<div class="m-panel__media">
+<img class="m-panel__image" src="" alt="">
+</div>
+</li>
+</template>
 
-    </ul><!-- /.m-panel -->
-  </div>
+
+<template class="m-panel__templateError">
+<li>Not found</li>
+</template>
+</div>
 </main><!-- /.l-main -->
 </body>
 </html>
