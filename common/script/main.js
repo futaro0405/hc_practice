@@ -37,7 +37,7 @@
 
       cloneName.textContent = data.name;
       cloneBadge.textContent = data.category;
-      cloneImage.src = data.image;
+      cloneImage.src = 'https://futaro0405.github.io/hc_practice/' + data.image;
 
       fragment.appendChild(clone);
     }
