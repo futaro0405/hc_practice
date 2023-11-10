@@ -1,10 +1,7 @@
 .l-main {
   display: grid;
   gap: 0 24px;
-  grid-template-columns:
-    1fr
-    minmax(375px - (24px * 2), 1000px)
-    1fr;
+  grid-template-columns: 1fr minmax(327px, 1000px) 1fr;
 }
 
 .l-main__inner {
@@ -30,8 +27,6 @@
   flex-wrap: wrap;
   margin-bottom: 32px;
 }
-
-
 
 .m-filter li {
   list-style: none;
